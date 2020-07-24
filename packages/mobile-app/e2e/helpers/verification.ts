@@ -25,6 +25,9 @@ export const verifyBySidemenu = async () => {
 
   await element(by.id('VerificationCodeInput')).typeText('000000');
 
+  await waitFor(element(by.text('Später')))
+    .toBeVisible()
+    .withTimeout(20000);
   await element(by.text('Später')).tap();
 
   await element(by.id('BurgerMenuButton')).tap();
