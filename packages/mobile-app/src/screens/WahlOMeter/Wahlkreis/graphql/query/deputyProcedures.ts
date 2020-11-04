@@ -12,6 +12,7 @@ export const DEPUTY_PROCEDURES = gql`
       constituency: $constituency
       directCandidate: $directCandidate
     ) {
+      _id
       totalProcedures
       procedures(offset: $offset, pageSize: $pageSize) {
         decision

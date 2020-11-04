@@ -64,7 +64,7 @@ const VotedProceduresWrapper: React.FC<Props> = ({
     ProceduresByIdHavingVoteResults,
     ProceduresByIdHavingVoteResultsVariables
   >(PROCEDURES_BY_HAVING_VOTE_RESULTS, {
-    variables: { offset: 0, pageSize: 5 },
+    variables: { offset: 0, pageSize: 10 },
     returnPartialData: true,
   });
 

@@ -12,6 +12,7 @@ export const DEPUTY_CHART_DATA = gql`
       constituency: $constituency
       directCandidate: $directCandidate
     ) {
+      _id
       totalProcedures
       party
       imgURL

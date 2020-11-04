@@ -56,7 +56,7 @@ const WomPartyList: React.FC<Props> = ({ onProcedureListItemClick }) => {
     VOTED_PARTY_PROCEDURES,
     {
       returnPartialData: true,
-      variables: { offset: 0, pageSize: 20 },
+      variables: { offset: 0, pageSize: 10 },
     },
   );
 

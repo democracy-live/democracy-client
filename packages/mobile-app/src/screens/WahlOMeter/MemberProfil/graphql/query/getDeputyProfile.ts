@@ -6,6 +6,7 @@ export const GET_DEPUTY_PROFILE = gql`
       constituency: $constituency
       directCandidate: $directCandidate
     ) {
+      _id
       name
       imgURL
       party
