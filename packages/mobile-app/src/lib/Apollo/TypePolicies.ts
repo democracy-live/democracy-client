@@ -3,6 +3,18 @@ import { Procedure_procedure_voteResults_partyVotes } from '../../screens/Bundes
 import { uniqBy } from 'lodash';
 
 export const typePolicies: TypedTypePolicies = {
+  Query: {
+    fields: {
+      procedures: {
+        keyArgs: ['listTypes', 'sort', 'filter'],
+        merge(existing = [], incoming: any[]) {
+          return uniqBy([...existing, ...incoming], procedure => {
+            return procedure.procedureId || procedure.__ref;
+          });
+        },
+      },
+    },
+  },
   Procedure: {
     fields: {
       voteResults: {

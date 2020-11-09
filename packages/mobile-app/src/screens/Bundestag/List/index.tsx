@@ -230,28 +230,10 @@ export const List = () => {
               variables: {
                 offset: data.procedures.length,
               },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                  return prev;
-                }
-
-                if (fetchMoreResult.procedures.length === 0) {
-                  setHasMore(false);
-                }
-
-                const newProcedureList = [
-                  ...prev.procedures,
-                  ...fetchMoreResult.procedures,
-                ];
-
-                return Object.assign({}, prev, {
-                  procedures: newProcedureList.filter(
-                    (s1, pos, arr) =>
-                      arr.findIndex(s2 => s2.procedureId === s1.procedureId) ===
-                      pos,
-                  ),
-                });
-              },
+            }).then(({ data: fetchMoreData }) => {
+              if (fetchMoreData.procedures.length === 0) {
+                setHasMore(false);
+              }
             });
         }}
       />
