@@ -19,7 +19,7 @@ const Space = styled.View`
 `;
 
 type Props = Omit<DrawerContentOptions, 'contentContainerStyle' | 'style'> & {
-  state: DrawerNavigationState;
+  state: DrawerNavigationState<any>;
   navigation: DrawerNavigationHelpers;
   descriptors: DrawerDescriptorMap;
 };

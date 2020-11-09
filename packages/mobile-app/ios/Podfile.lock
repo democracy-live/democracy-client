@@ -21,7 +21,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - Permission-Notifications (2.1.5):
+  - Permission-Notifications (2.2.2):
     - RNPermissions
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
@@ -186,16 +186,18 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-camera (3.36.0):
-    - React
-    - react-native-camera/RCT (= 3.36.0)
-    - react-native-camera/RN (= 3.36.0)
-  - react-native-camera/RCT (3.36.0):
-    - React
-  - react-native-camera/RN (3.36.0):
-    - React
-  - react-native-config (1.3.1):
-    - React
+  - react-native-camera (3.40.0):
+    - React-Core
+    - react-native-camera/RCT (= 3.40.0)
+    - react-native-camera/RN (= 3.40.0)
+  - react-native-camera/RCT (3.40.0):
+    - React-Core
+  - react-native-camera/RN (3.40.0):
+    - React-Core
+  - react-native-config (1.4.0):
+    - react-native-config/App (= 1.4.0)
+  - react-native-config/App (1.4.0):
+    - React-Core
   - react-native-notifications (3.2.2):
     - React
   - react-native-pdf (6.0.1):
@@ -245,20 +247,20 @@ PODS:
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (5.6.2):
+  - RNDeviceInfo (5.6.5):
     - React
-  - RNGestureHandler (1.6.1):
+  - RNGestureHandler (1.8.0):
     - React
   - RNKeychain (4.0.5):
     - React
-  - RNPermissions (2.1.5):
+  - RNPermissions (2.2.2):
+    - React-Core
+  - RNRate (1.2.4):
     - React
-  - RNRate (1.2.1):
+  - RNReanimated (1.13.1):
     - React
-  - RNReanimated (1.9.0):
-    - React
-  - RNScreens (2.9.0):
-    - React
+  - RNScreens (2.13.0):
+    - React-Core
   - RNSearchBar (3.5.1):
     - React
   - RNSha256 (1.3.6):
@@ -424,7 +426,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  Permission-Notifications: 231d0e1db2300b686548587d384ba414e6a93332
+  Permission-Notifications: 9c6b5cc4f0e6599e9fc3395b77cebddc48f1be41
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
@@ -434,8 +436,8 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-camera: 8016138a8348b889e22c95b23f668a234f124335
-  react-native-config: 54f023214af396f21ff0a9e0fed22620d676c8a1
+  react-native-camera: 35854c4f764a4a6cf61c1c3525888b92f0fe4b31
+  react-native-config: f309b9ac19456dea12325699af51e0fa0217ce6a
   react-native-notifications: 3d1c66c8a3eb1857577f283f9f6e9aa505f16346
   react-native-pdf: 29a09815e99c92743aa8459a90564aaddd4065e0
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
@@ -453,13 +455,13 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
   RNCAsyncStorage: 44395cb9c7c1523104c2b499eb426ef7aff82bca
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: ed8557a8bd6443cbc0ab5d375e6808a38a279744
-  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNDeviceInfo: c5f8f3a456adcbba405ace475254b08febc4c095
+  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNKeychain: 840f8e6f13be0576202aefcdffd26a4f54bfe7b5
-  RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
-  RNRate: a39ac26dc9daf3f9b639ce274b7f80672ae36db1
-  RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
-  RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
+  RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
+  RNRate: 15b861025a7821730761fce7f44561ce7e0b2de0
+  RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
+  RNScreens: 13f23e5498fb4aa749d19a5eda7f8792fbb9d01f
   RNSearchBar: 9860431356b7d12a8449d2fddb2b5f3c78d1e99f
   RNSha256: c6f68c850bf8315c95e2508667e8c908bd9f8487
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
