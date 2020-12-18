@@ -67,3 +67,4 @@ buck-out/
 google-services.json
 .env.*
 !.env.*.gpg
+ios/*.app.dSYM.zip
