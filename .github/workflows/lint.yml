@@ -18,7 +18,7 @@ jobs:
       - run: yarn install
 
       - name: Run ESLint
-        run: yarn lint:eslint
+        run: yarn lint:es
 
       - name: Run TSLint
         run: yarn lint:ts
