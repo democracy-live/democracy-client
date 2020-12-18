@@ -1,0 +1,6 @@
+fragment DetailDecisionText on Procedure {
+  procedureId
+  voteResults {
+    decisionText
+  }
+}

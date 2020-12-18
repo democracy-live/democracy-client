@@ -1,0 +1,15 @@
+fragment DetailDecisionBarChart on Procedure {
+  procedureId
+  voteResults {
+    namedVote
+    partyVotes {
+      party
+      deviants {
+        yes
+        abstination
+        no
+        notVoted
+      }
+    }
+  }
+}

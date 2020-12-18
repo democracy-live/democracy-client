@@ -1,10 +1,11 @@
 module.exports = {
   client: {
-    includes: ["./packages/mobile-app/src/**/*.ts"],
     service: {
-      name: "DEMOCRACY API Local",
-      url: "https://internal.api.democracy-app.de",
-      skipSSLValidation: true
-    }
-  }
+      name: 'DEMOCRACY API',
+      url: 'https://internal.api.democracy-app.de',
+      skipSSLValidation: true,
+      // localSchemaFile: './src/lib/apollo/clientSchema.graphql',
+    },
+    includes: ['./src/**/*.graphql'],
+  },
 };

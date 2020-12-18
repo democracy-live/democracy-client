@@ -1,0 +1,8 @@
+fragment GovernmentVotesPieChart on Procedure {
+  voteResults {
+    yes
+    abstination
+    no
+    notVoted
+  }
+}

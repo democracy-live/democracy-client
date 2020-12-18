@@ -1,0 +1,12 @@
+query SearchProcedures($term: String!) {
+  searchProceduresAutocomplete(term: $term) {
+    procedures {
+      _id
+      procedureId
+      ...ListItem
+      ...CommunityVotesPieChart
+      ...GovernmentVotesPieChart
+    }
+    autocomplete
+  }
+}

@@ -1,0 +1,12 @@
+fragment ProcedureDetails on Procedure {
+  procedureId
+  subjectGroups
+  currentStatus
+  type
+  submissionDate
+  voteDate
+  abstract
+  ...ImportantDocuments
+  ...DetailActionBar
+  ...CommunityVoteResults
+}

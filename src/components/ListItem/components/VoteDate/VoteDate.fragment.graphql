@@ -1,0 +1,4 @@
+fragment VoteDate on Procedure {
+  voteDate
+  voteEnd
+}

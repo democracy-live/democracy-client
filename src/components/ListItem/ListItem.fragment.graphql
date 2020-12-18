@@ -1,0 +1,7 @@
+fragment ListItem on Procedure {
+  procedureId
+  title
+  sessionTOPHeading
+  ...VoteIndex
+  ...VoteDate
+}

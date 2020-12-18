@@ -1,0 +1,19 @@
+query WomFractionChart($procedureIds: [String!], $pageSize: Int, $offset: Int) {
+  womFractionChart: proceduresByIdHavingVoteResults(
+    procedureIds: $procedureIds
+    pageSize: $pageSize
+    offset: $offset
+  ) {
+    total
+    procedures {
+      procedureId
+      voteResults {
+        namedVote
+        partyVotes {
+          party
+          main
+        }
+      }
+    }
+  }
+}

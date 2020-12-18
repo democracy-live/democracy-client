@@ -1,7 +1,0 @@
-overwrite: true
-schema:
-  - 'https://internal.api.democracy-app.de'
-generates:
-  src/__generated/apollo-helpers.ts:
-    plugins:
-      - typescript-apollo-client-helpers

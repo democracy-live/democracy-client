@@ -1,0 +1,10 @@
+fragment WomDeputyChart on Deputy {
+  _id
+  totalProcedures
+  procedures(procedureIds: $procedureIds) {
+    decision
+    procedure {
+      procedureId
+    }
+  }
+}

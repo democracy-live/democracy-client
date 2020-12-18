@@ -1,0 +1,4 @@
+fragment ProcedureHistory on Procedure {
+  currentStatus
+  currentStatusHistory
+}

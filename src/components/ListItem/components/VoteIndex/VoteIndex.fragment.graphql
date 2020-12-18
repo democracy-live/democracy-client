@@ -1,0 +1,4 @@
+fragment VoteIndex on Procedure {
+  votes
+  voted
+}

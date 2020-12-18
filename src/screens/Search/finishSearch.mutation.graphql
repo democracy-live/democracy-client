@@ -1,0 +1,5 @@
+mutation FinishSearch($term: String!) {
+  finishSearch(term: $term) {
+    term
+  }
+}

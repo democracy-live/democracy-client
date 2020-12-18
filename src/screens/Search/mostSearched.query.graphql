@@ -1,0 +1,5 @@
+query MostSearched {
+  mostSearched {
+    term
+  }
+}

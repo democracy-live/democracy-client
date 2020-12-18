@@ -1,0 +1,9 @@
+fragment CommunityVotesPieChart on Procedure {
+  procedureId
+  communityVotes {
+    yes
+    abstination
+    no
+  }
+  voted
+}

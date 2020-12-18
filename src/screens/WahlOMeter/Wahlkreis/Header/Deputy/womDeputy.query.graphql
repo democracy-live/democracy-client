@@ -1,0 +1,13 @@
+query WomDeputy(
+  $constituency: String!
+  $directCandidate: Boolean
+  $procedureIds: [String!]!
+) {
+  womDeputy: deputiesOfConstituency(
+    constituency: $constituency
+    directCandidate: $directCandidate
+  ) {
+    ...WomDeputyChart
+    ...Profil
+  }
+}

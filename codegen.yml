@@ -1,0 +1,17 @@
+overwrite: true
+schema:
+  - 'https://internal.api.democracy-app.de'
+  # - 'src/lib/apollo/clientSchema.graphql'
+documents: 'src/**/*.graphql'
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+  src/generated/possible-types.ts:
+    plugins:
+      - 'fragment-matcher'
+  ./graphql.schema.json:
+    plugins:
+      - 'introspection'

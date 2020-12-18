@@ -1,0 +1,12 @@
+query WomPartyList($pageSize: Int, $offset: Int) {
+  womPartyList: proceduresByIdHavingVoteResults(
+    pageSize: $pageSize
+    offset: $offset
+  ) {
+    procedures {
+      ...ListItem
+      ...CommunityVotesPieChart
+      ...GovernmentVotesPieChart
+    }
+  }
+}

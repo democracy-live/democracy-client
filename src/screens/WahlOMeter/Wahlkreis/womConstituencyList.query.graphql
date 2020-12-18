@@ -1,0 +1,22 @@
+query WomConstituencyList(
+  $constituency: String!
+  $directCandidate: Boolean
+  $offset: Int
+  $pageSize: Int
+) {
+  womConstituencyList: deputiesOfConstituency(
+    constituency: $constituency
+    directCandidate: $directCandidate
+  ) {
+    _id
+    totalProcedures
+    procedures(offset: $offset, pageSize: $pageSize) {
+      decision
+      procedure {
+        ...ListItem
+        ...CommunityVotesPieChart
+        ...GovernmentVotesPieChart
+      }
+    }
+  }
+}

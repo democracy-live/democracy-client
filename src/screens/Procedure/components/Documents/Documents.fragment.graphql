@@ -1,0 +1,5 @@
+fragment ImportantDocuments on Procedure {
+  importantDocuments {
+    ...ImportantDocument
+  }
+}

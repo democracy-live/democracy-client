@@ -1,6 +1,0 @@
-<svg id="menu--burger" aria-labelledby="t-menu--burger d-menu--burger" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <title id="t-menu--burger">Menu</title>
-    <path fill="#fff" d="M30,28c1.104,0,2-0.895,2-2s-0.896-2-2-2H2c-1.104,0-2,0.895-2,2s0.896,2,2,2H30z"/>
-    <path fill="#fff" d="M30,18c1.104,0,2-0.895,2-2c0-1.105-0.896-2-2-2H2c-1.104,0-2,0.895-2,2c0,1.105,0.896,2,2,2H30z"/>
-    <path fill="#fff" d="M30,8c1.104,0,2-0.895,2-2s-0.896-2-2-2H2C0.896,4,0,4.895,0,6s0.896,2,2,2H30z"/>
-</svg>

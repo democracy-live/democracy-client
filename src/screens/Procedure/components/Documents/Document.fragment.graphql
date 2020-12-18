@@ -1,0 +1,6 @@
+fragment ImportantDocument on Document {
+  editor
+  type
+  url
+  number
+}

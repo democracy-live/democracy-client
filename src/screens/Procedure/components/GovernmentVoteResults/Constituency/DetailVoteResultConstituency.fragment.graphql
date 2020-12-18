@@ -1,0 +1,16 @@
+fragment DetailVoteResultConstituency on Procedure {
+  _id
+  procedureId
+  voteResults {
+    deputyVotes(constituencies: $constituencies, directCandidate: true) {
+      deputy {
+        _id
+        imgURL
+        name
+        party
+        constituency
+      }
+      decision
+    }
+  }
+}

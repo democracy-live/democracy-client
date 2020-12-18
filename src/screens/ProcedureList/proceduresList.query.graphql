@@ -1,0 +1,19 @@
+query ProceduresList(
+  $offset: Int
+  $pageSize: Int
+  $listTypes: [ListType!]
+  $filter: ProcedureFilter
+) {
+  procedures(
+    offset: $offset
+    pageSize: $pageSize
+    listTypes: $listTypes
+    filter: $filter
+  ) {
+    procedureId
+    title
+    ...ListItem
+    ...CommunityVotesPieChart
+    ...GovernmentVotesPieChart
+  }
+}

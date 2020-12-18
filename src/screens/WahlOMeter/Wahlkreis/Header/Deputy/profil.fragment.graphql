@@ -1,0 +1,7 @@
+fragment Profil on Deputy {
+  _id
+  party
+  imgURL
+  name
+  constituency
+}

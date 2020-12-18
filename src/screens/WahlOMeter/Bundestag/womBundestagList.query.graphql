@@ -1,0 +1,12 @@
+query WomBundestagList($pageSize: Int, $offset: Int) {
+  womBundestagList: proceduresByIdHavingVoteResults(
+    pageSize: $pageSize
+    offset: $offset
+  ) {
+    procedures {
+      ...ListItem
+      ...CommunityVotesPieChart
+      ...GovernmentVotesPieChart
+    }
+  }
+}

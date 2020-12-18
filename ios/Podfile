@@ -1,0 +1,40 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '10.0'
+
+abstract_target 'App' do
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
+
+  # react-native-permissions
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
+
+  target 'DemocracyApp' do
+    # Production-specific pods
+    target 'DemocracyAppTests' do
+      inherit! :complete
+      # Pods for testing
+    end
+  end
+
+  target 'DemocracyAppAlpha' do
+    # Alpha-specific pods
+  end
+
+  target 'DemocracyAppInternal' do
+    # Internal-specific pods
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+end

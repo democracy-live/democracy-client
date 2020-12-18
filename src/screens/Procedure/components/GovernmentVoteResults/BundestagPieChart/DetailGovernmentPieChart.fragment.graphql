@@ -1,0 +1,13 @@
+fragment DetailGovernmentPieChart on Procedure {
+  procedureId
+  voteResults {
+    yes
+    abstination
+    no
+    notVoted
+    namedVote
+    partyVotes {
+      party
+    }
+  }
+}
