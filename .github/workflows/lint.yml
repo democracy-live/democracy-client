@@ -195,9 +195,10 @@ jobs:
           TRAVIS_BRANCH: ${{ github.ref }}
           TRAVIS: 'true'
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          # FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          # FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
 
   # build-andriod:
   #   name: Build Android
