@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Platform, ActivityIndicator } from 'react-native';
+import { Platform } from 'react-native';
 
 import { BalloutBox } from './components/BallotBox';
 

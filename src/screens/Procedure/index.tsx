@@ -43,8 +43,6 @@ const Container = styled.ScrollView`
   background-color: ${({ theme }) => theme.backgroundColor};
 `;
 
-const Text = styled.Text``;
-
 type Props = {
   route: ProfileScreenRouteProp;
   navigation: ProfileScreenNavigationProps;
