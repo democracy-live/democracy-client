@@ -71,7 +71,8 @@ platform :ios do
     # handle build_number
     build_number = latest_testflight_build_number(
       version: version_number,
-      app_identifier: app_identifier
+      app_identifier: app_identifier,
+      api_key: ENV['FASTLANE_APPLE_CONNECT_API_KEY']
     ).to_i
     build_number_local = get_build_number(xcodeproj: "DemocracyApp.xcodeproj").to_i
 
