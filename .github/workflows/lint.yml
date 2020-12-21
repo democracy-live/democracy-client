@@ -207,6 +207,7 @@ jobs:
           TRAVIS_BRANCH: ${{ github.ref }}
           TRAVIS: 'true'
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          FASTLANE_APPLE_ID: ${{ secrets.FASTLANE_APPLE_ID }}
 
   # build-andriod:
   #   name: Build Android
