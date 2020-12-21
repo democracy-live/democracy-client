@@ -114,12 +114,8 @@ platform :ios do
     upload_to_testflight(
       app_identifier: app_identifier,
       skip_waiting_for_build_processing: true,
-      apple_id: ENV['FASTLANE_APPLE_ID']
+      apple_id: app_identifier
     )
-
-    if ENV['TRAVIS']
-      delete_keychain(name: "temporary_keychain")
-    end
 
     if ENV['TRAVIS']
       delete_keychain(name: "temporary_keychain")
