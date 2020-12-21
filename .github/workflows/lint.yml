@@ -186,7 +186,7 @@ jobs:
       - name: Fix match prompt issue
         run: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-      - name: Fastlane
+      - name: Fastlane Build
         uses: maierj/fastlane-action@v1.4.0
         with:
           lane: 'ios build'
@@ -198,7 +198,7 @@ jobs:
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
 
-      - name: Fastlane
+      - name: Fastlane Upload
         uses: maierj/fastlane-action@v1.4.0
         with:
           lane: 'ios upload'
