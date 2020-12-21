@@ -1170,7 +1170,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 243;
 				DEVELOPMENT_TEAM = A4B84UJD7M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DemocracyAppInternal/Info.plist;
@@ -1200,7 +1200,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 243;
 				DEVELOPMENT_TEAM = A4B84UJD7M;
 				INFOPLIST_FILE = DemocracyAppInternal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
