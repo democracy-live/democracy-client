@@ -186,8 +186,14 @@ jobs:
       - name: Fix match prompt issue
         run: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '>= 2.6'
+
+      - run: bundle update fastlane
+
       - name: Fastlane Build
-        uses: maierj/fastlane-action@v1.4.0
+        uses: maierj/fastlane-action@v2.0.0
         with:
           lane: 'ios build'
           subdirectory: 'ios'
@@ -200,7 +206,7 @@ jobs:
           FASTLANE_APPLE_CONNECT_API_KEY: ${{ secrets.FASTLANE_APPLE_CONNECT_API_KEY }}
 
       - name: Fastlane Upload
-        uses: maierj/fastlane-action@v1.4.0
+        uses: maierj/fastlane-action@v2.0.0
         with:
           lane: 'ios upload'
           subdirectory: 'ios'
@@ -248,7 +254,7 @@ jobs:
   #       working-directory: packages/mobile-app/android
 
   #     - name: Fastlane
-  #       uses: maierj/fastlane-action@v1.4.0
+  #       uses: maierj/fastlane-action@v2.0.0
   #       with:
   #         lane: "android internal"
   #         subdirectory: "packages/mobile-app/android"
