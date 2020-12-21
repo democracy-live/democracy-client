@@ -114,7 +114,7 @@ platform :ios do
     upload_to_testflight(
       app_identifier: app_identifier,
       skip_waiting_for_build_processing: true,
-      apple_id: app_identifier
+      apple_id: "1341311162"
     )
 
     if ENV['TRAVIS']
