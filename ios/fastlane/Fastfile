@@ -40,7 +40,7 @@ end
 
 platform :ios do
   desc "Installs the certificates locally"
-    private_lane :install_certificates do
+  private_lane :install_certificates do
     if ENV['TRAVIS']
       tmp_keychain = "temporary_keychain"
       create_keychain(
@@ -64,8 +64,8 @@ platform :ios do
     end
   end
 
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
+  desc "Build a new app"
+  lane :build do
     install_certificates
 
     # handle build_number
@@ -97,6 +97,13 @@ platform :ios do
       clean: true,
     )
 
+    if ENV['TRAVIS']
+      delete_keychain(name: "temporary_keychain")
+    end
+  end
+
+  desc "Upload a new app"
+  lane :upload do
     # upload_to_browserstack_app_live(
     #   browserstack_username: ENV["BROWSERSTACK_USERNAME"],
     #   browserstack_access_key: ENV["BROWSERSTACK_ACCESS_KEY"],
