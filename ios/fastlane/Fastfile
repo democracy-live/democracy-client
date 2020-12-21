@@ -25,17 +25,21 @@ print("P TRAVIS_BRANCH: " + ENV["TRAVIS_BRANCH"])
 
 scheme_name = "Refactor"
 app_identifier = "de.democracy-deutschland.clientapp.refactor"
+apple_id = ""
 if ENV["TRAVIS_BRANCH"] == 'refs/heads/alpha'
   scheme_name = "Alpha"
   app_identifier = "de.democracy-deutschland.clientapp.alpha"
+  apple_id = "1373762120"
 end
 if ENV["TRAVIS_BRANCH"] == 'refs/heads/internal'
   scheme_name = "DemocracyAppInternal"
   app_identifier = "de.democracy-deutschland.clientapp.internal"
+  apple_id = "1403753894"
 end
 if ENV["TRAVIS_BRANCH"] == 'refs/heads/master'
   scheme_name = "client"
   app_identifier = "de.democracy-deutschland.clientapp"
+  apple_id = "1341311162"
 end
 
 platform :ios do
@@ -114,7 +118,7 @@ platform :ios do
     upload_to_testflight(
       app_identifier: app_identifier,
       skip_waiting_for_build_processing: true,
-      apple_id: "1341311162"
+      apple_id: apple_id
     )
 
     if ENV['TRAVIS']
