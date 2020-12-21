@@ -64,7 +64,7 @@ platform :ios do
     end
   end
 
-  desc "Build a new app"
+  desc "Build & Upload a new app"
   lane :build do
     install_certificates
 
@@ -104,13 +104,6 @@ platform :ios do
       clean: true,
     )
 
-    if ENV['TRAVIS']
-      delete_keychain(name: "temporary_keychain")
-    end
-  end
-
-  desc "Upload a new app"
-  lane :upload do
     # upload_to_browserstack_app_live(
     #   browserstack_username: ENV["BROWSERSTACK_USERNAME"],
     #   browserstack_access_key: ENV["BROWSERSTACK_ACCESS_KEY"],
@@ -123,6 +116,10 @@ platform :ios do
       skip_waiting_for_build_processing: true,
       apple_id: ENV['FASTLANE_APPLE_ID']
     )
+
+    if ENV['TRAVIS']
+      delete_keychain(name: "temporary_keychain")
+    end
 
     if ENV['TRAVIS']
       delete_keychain(name: "temporary_keychain")
