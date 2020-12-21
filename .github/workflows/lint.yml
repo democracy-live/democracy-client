@@ -190,6 +190,8 @@ jobs:
         with:
           ruby-version: '>= 2.6'
 
+      - run: bundle update --bundler
+
       - run: bundle update fastlane
         working-directory: ios
 
