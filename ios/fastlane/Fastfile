@@ -21,7 +21,7 @@ package = load_json(json_path: "../package.json")
 
 version_number = package["version"]
 
-print("P TRAVIS_BRANCH" + ENV["TRAVIS_BRANCH"])
+print("P TRAVIS_BRANCH: " + ENV["TRAVIS_BRANCH"])
 
 scheme_name = "Refactor"
 app_identifier = "de.democracy-deutschland.clientapp.refactor"
@@ -102,6 +102,7 @@ platform :ios do
       workspace: "DemocracyApp.xcworkspace", 
       scheme: scheme_name,
       clean: true,
+      export_xcargs: "-allowProvisioningUpdates"
     )
 
     # upload_to_browserstack_app_live(
