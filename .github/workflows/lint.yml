@@ -191,6 +191,7 @@ jobs:
           ruby-version: '>= 2.6'
 
       - run: bundle update fastlane
+        working-directory: ios
 
       - name: Fastlane Build
         uses: maierj/fastlane-action@v2.0.0
