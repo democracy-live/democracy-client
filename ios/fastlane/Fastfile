@@ -101,8 +101,7 @@ platform :ios do
     build_app(
       workspace: "DemocracyApp.xcworkspace", 
       scheme: scheme_name,
-      clean: true,
-      export_xcargs: "-allowProvisioningUpdates"
+      clean: true
     )
 
     # upload_to_browserstack_app_live(

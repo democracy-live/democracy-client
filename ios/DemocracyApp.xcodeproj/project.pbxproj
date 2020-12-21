@@ -403,7 +403,7 @@
 					};
 					C3927289258A0A5A00223B3B = {
 						DevelopmentTeam = A4B84UJD7M;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					C3927301258A280400223B3B = {
 						DevelopmentTeam = A4B84UJD7M;
@@ -1168,7 +1168,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.internal;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A4B84UJD7M;
 				ENABLE_BITCODE = NO;
@@ -1182,7 +1183,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.democracy-deutschland.clientapp.internal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development de.democracy-deutschland.clientapp.internal";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1197,7 +1198,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.internal;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A4B84UJD7M;
 				INFOPLIST_FILE = DemocracyAppInternal/Info.plist;
@@ -1210,7 +1212,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.democracy-deutschland.clientapp.internal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore de.democracy-deutschland.clientapp.internal";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
