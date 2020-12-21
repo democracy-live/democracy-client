@@ -182,6 +182,7 @@ jobs:
           echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.internal.gpg
           echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.alpha.gpg
           echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.prod.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 ios/AuthKey_3Q9U495BMY.p8.gpg
 
       - name: Fix match prompt issue
         run: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
