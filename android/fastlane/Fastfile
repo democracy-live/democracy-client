@@ -15,7 +15,7 @@
 
 default_platform(:android)
 
-package = load_json(json_path: "../../../package.json")
+package = load_json(json_path: "s../package.json")
 
 version_number = package["version"]
 

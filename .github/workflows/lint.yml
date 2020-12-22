@@ -214,7 +214,6 @@ jobs:
 
   build-andriod:
     name: Build Android
-    needs: [lint]
     # needs: [lint, test-ios, test-android]
     if: github.ref == 'refs/heads/internal' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/master'
     runs-on: macos-latest
@@ -244,6 +243,16 @@ jobs:
       # echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/internal/google-services.json.gpg
       # echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/alpha/google-services.json.gpg
       # echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/google-services.json.gpg
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '>= 2.6'
+
+      - run: bundle update --bundler
+        working-directory: android
+
+      - run: bundle update fastlane
+        working-directory: android
 
       - name: Prepare Fastlane metadata
         if: github.ref == 'refs/heads/internal' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta'
