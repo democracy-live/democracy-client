@@ -208,25 +208,25 @@ android {
             // minSdkVersion rootProject.ext.minSdkVersion
             applicationId 'de.democracydeutschland.app'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "de.democracydeutschland.app"
+            resValue "string", "build_config_package", "com.democracyapp"
         }
         refactor {
             // // minSdkVersion rootProject.ext.minSdkVersion
             applicationId 'de.democracydeutschland.app.refactor'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "de.democracydeutschland.app"
+            resValue "string", "build_config_package", "com.democracyapp"
         }
         internal {
             // // minSdkVersion rootProject.ext.minSdkVersion
             applicationId 'de.democracydeutschland.app.internal'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "de.democracydeutschland.app"
+            resValue "string", "build_config_package", "com.democracyapp"
         }
         alpha {
             // minSdkVersion rootProject.ext.minSdkVersion
             applicationId 'de.democracydeutschland.app.alpha'
             targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "de.democracydeutschland.app"
+            resValue "string", "build_config_package", "com.democracyapp"
         }
     }
  

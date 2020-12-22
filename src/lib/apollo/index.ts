@@ -11,7 +11,7 @@ import { typePolicies } from './typePolicies';
 import { versionLinkMiddleware } from './Version';
 import Config from 'react-native-config';
 
-console.log(Config);
+console.log('Config: ', Config);
 
 const httpLink: any = new HttpLink({
   uri: Config.API_ENDPOINT,
