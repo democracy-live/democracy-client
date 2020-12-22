@@ -2,6 +2,7 @@ project.ext.envConfigFiles = [
   release: ".env.prod",
   debug: ".env.prod",
   internal: ".env.internal",
+  internalrelease: ".env.internal",
   alpha: ".env.alpha",
 ]
 
@@ -141,8 +142,8 @@ android {
         applicationId "com.democracyapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 103743
+        versionName "1.4.0"
         missingDimensionStrategy 'react-native-camera', 'general'
         multiDexEnabled true
         resValue "string", "build_config_package", "com.democracyapp"
@@ -166,7 +167,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            matchingFallbacks = ['debug', 'release']
+            // matchingFallbacks = ['debug', 'release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -175,14 +176,15 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
-        internal {
-            initWith debug
-            applicationIdSuffix ".internal"
-        }
-        alpha {
-            initWith debug
-            applicationIdSuffix ".alpha"
-        }
+        // internal {
+        //     initWith debug
+        //     applicationIdSuffix ".internal"
+        //     matchingFallbacks = ['debug', 'release']
+        // }
+        // alpha {
+        //     initWith debug
+        //     applicationIdSuffix ".alpha"
+        // }
     }
 
     // applicationVariants are e.g. debug, release
@@ -200,6 +202,33 @@ android {
         }
     }
 
+    flavorDimensions "stage"
+    productFlavors {
+        master {
+            // minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'de.democracydeutschland.app'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "de.democracydeutschland.app"
+        }
+        refactor {
+            // // minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'de.democracydeutschland.app.refactor'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "de.democracydeutschland.app"
+        }
+        internal {
+            // // minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'de.democracydeutschland.app.internal'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "de.democracydeutschland.app"
+        }
+        alpha {
+            // minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'de.democracydeutschland.app.alpha'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "de.democracydeutschland.app"
+        }
+    }
  
     packagingOptions {
         pickFirst 'lib/x86/libc++_shared.so'
