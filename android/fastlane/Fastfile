@@ -1,0 +1,133 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+package = load_json(json_path: "../../../package.json")
+
+version_number = package["version"]
+
+package_name = "de.democracydeutschland.app.new"
+ENV["ENVFILE"] = ".env.internal"
+
+if ENV["TRAVIS_BRANCH"] == 'refs/heads/alpha'
+  package_name = "de.democracydeutschland.app" + ".alpha"
+  ENV["ENVFILE"] = ".env.alpha"
+  flavor = "alpha"
+end
+if ENV["TRAVIS_BRANCH"] == 'refs/heads/internal'
+  package_name = "de.democracydeutschland.app" + ".internal"
+  ENV["ENVFILE"] = ".env.internal"
+  flavor = "internal"
+end
+if ENV["TRAVIS_BRANCH"] == 'refs/heads/master'
+  package_name = "de.democracydeutschland.app"
+  ENV["ENVFILE"] = ".env.production"
+  flavor = "master"
+end
+
+
+internalVersionCode = google_play_track_version_codes(package_name: package_name, track: 'internal')
+alphaVersionCode = google_play_track_version_codes(package_name: package_name, track: 'alpha')
+productionVersionCode = google_play_track_version_codes(package_name: package_name)
+version_code = [internalVersionCode,alphaVersionCode,productionVersionCode].max[0].to_i + 1
+
+store_password = prompt(text: "Signing Store Password: ", secure_text: true, ci_input: ENV['ANDROID_PASS'])
+key_password = prompt(text: "Alias Key Password: ", secure_text: true, ci_input: ENV['ANDROID_PASS'])
+releaseFilePath = File.join(Dir.pwd, "..", "democracy2-release-key.keystore")
+key_alias = "democracy2-key-alias"
+
+if ENV["TRAVIS_BRANCH"] == 'refs/heads/refactor'
+  store_password = prompt(text: "Signing Store Password: ", secure_text: true, ci_input: ENV['ANDROID_KEYSTORE_PASSWORD'])
+  key_password = prompt(text: "Alias Key Password: ", secure_text: true, ci_input: ENV['ANDROID_KEYSTORE_PASSWORD'])
+  releaseFilePath = File.join(Dir.pwd, "..", "my-release-key.keystore")
+  key_alias = "my-key-alias"
+end
+
+platform :android do
+  desc "Runs all the tests"
+
+  android_set_version_name(
+    version_name: version_number
+  )
+
+  increment_version_code(
+    gradle_file_path: "app/build.gradle",
+    version_code: version_code
+  )
+
+  gradle(task: 'clean')
+
+  lane :test do
+    gradle(task: "test")
+  end
+
+  private_lane :build do
+
+    gradle(
+      task: 'bundle',
+      build_type: 'Release',
+      print_command: false,
+      flavor: flavor,
+      properties: {
+        "android.injected.signing.store.file" => releaseFilePath,
+        "android.injected.signing.store.password" => store_password,
+        "android.injected.signing.key.alias" => key_alias,
+        "android.injected.signing.key.password" => key_password,
+      }
+    )
+  end
+
+  desc "Submit a new Build to Browserstack"
+  private_lane :browserstack do
+
+    gradle(
+      task: 'assemble',
+      build_type: 'Release',
+      print_command: false,
+      flavor: flavor,
+      properties: {
+        "android.injected.signing.store.file" => releaseFilePath,
+        "android.injected.signing.store.password" => store_password,
+        "android.injected.signing.key.alias" => key_alias,
+        "android.injected.signing.key.password" => key_password,
+      }
+    )
+
+    upload_to_browserstack_app_live(
+      browserstack_username: ENV["BROWSERSTACK_USERNAME"],
+      browserstack_access_key: ENV["BROWSERSTACK_ACCESS_KEY"],
+    )
+
+    end
+
+  desc "Submit a new Internal Build to Play Store"
+  lane :internal do
+
+    build
+
+    supply(
+     package_name: package_name,
+     track: 'internal',
+     track_promote_to: 'internal',
+    #  skip_upload_metadata: true,
+    #  skip_upload_changelogs: true,
+    #  skip_upload_images: true,
+    #  skip_upload_screenshots: true
+    )
+
+    browserstack
+    end
+end

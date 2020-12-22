@@ -54,15 +54,15 @@ jobs:
   #       run: applesimutils --list
 
   #     - run: pod install
-  #       working-directory: packages/mobile-app/ios
+  #       working-directory: ios
 
   #     - name: Encrypt GPG secure files
   #       run: |
   #         brew install gnupg@1.4
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.internal.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.alpha.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.beta.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.production.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.internal.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.alpha.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.beta.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.production.gpg
 
   #     - run: npm install -g detox-cli
 
@@ -76,7 +76,7 @@ jobs:
   #       if: always()
   #       with:
   #         name: Detox iOS
-  #         path: packages/mobile-app/artifacts
+  #         path: artifacts
 
   # test-android:
   #   name: Test detox Android
@@ -103,18 +103,18 @@ jobs:
   #     - name: Encrypt GPG secure files
   #       run: |
   #         brew install gnupg@1.4
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/my-release-key.keystore.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/src/refactor/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/src/internal/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/src/alpha/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/democracy2-release-key.keystore.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.internal.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.alpha.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.beta.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.production.gpg
-  #         cp packages/mobile-app/.env.internal packages/mobile-app/.env
-  #         cp packages/mobile-app/.env.internal packages/mobile-app/.env.development
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/my-release-key.keystore.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/refactor/google-services.json.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/internal/google-services.json.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/alpha/google-services.json.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/google-services.json.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/democracy2-release-key.keystore.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.internal.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.alpha.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.beta.gpg
+  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.production.gpg
+  #         cp .env.internal .env
+  #         cp .env.internal .env.development
 
   #     - name: Prepare minSdkVerson for Wix DETOX
   #       run: yarn postinstall:android-e2e-fix
@@ -149,7 +149,7 @@ jobs:
   #       if: always()
   #       with:
   #         name: Detox Android (${{ matrix.sdk }} - ${{ matrix.device }})
-  #         path: packages/mobile-app/artifacts
+  #         path: artifacts
 
   build-ios:
     name: Build ios
@@ -212,60 +212,61 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
           FASTLANE_APPLE_ID: ${{ secrets.FASTLANE_APPLE_ID }}
 
-  # build-andriod:
-  #   name: Build Android
-  #   needs: [lint, test-ios, test-android]
-  #   if: github.ref == 'refs/heads/internal' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/master'
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+  build-andriod:
+    name: Build Android
+    needs: [lint]
+    # needs: [lint, test-ios, test-android]
+    if: github.ref == 'refs/heads/internal' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/master'
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Setup NodeJS
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: "12.x"
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
 
-  #     - run: yarn install
+      - run: yarn install
 
-  #     - run: sudo gem install bundler:1.17.3
+      - run: sudo gem install bundler:1.17.3
 
-  #     - name: Encrypt GPG secure files
-  #       run: |
-  #         brew install gnupg@1.4
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/my-release-key.keystore.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/src/refactor/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/src/internal/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/src/alpha/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/app/google-services.json.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/android/democracy2-release-key.keystore.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.internal.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.alpha.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.beta.gpg
-  #         echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 packages/mobile-app/.env.production.gpg
+      - name: Encrypt GPG secure files
+        run: |
+          brew install gnupg@1.4
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/my-release-key.keystore.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/refactor/google-services.json.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/internal/google-services.json.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/src/alpha/google-services.json.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/app/google-services.json.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 android/democracy2-release-key.keystore.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.internal.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.alpha.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.beta.gpg
+          echo ${{ secrets.SUPER_SECRET_PASSWORD }} | gpg1 --no-tty --passphrase-fd 0 .env.prod.gpg
 
-  #     - name: Prepare Fastlane metadata
-  #       if: github.ref == 'refs/heads/internal' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta'
-  #       run: ditto fastlane/metadata/${GITHUB_REF:11} fastlane/metadata/android/de-DE/
-  #       working-directory: packages/mobile-app/android
+      - name: Prepare Fastlane metadata
+        if: github.ref == 'refs/heads/internal' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta'
+        run: ditto fastlane/metadata/${GITHUB_REF:11} fastlane/metadata/android/de-DE/
+        working-directory: android
 
-  #     - name: Fastlane
-  #       uses: maierj/fastlane-action@v2.0.0
-  #       with:
-  #         lane: "android internal"
-  #         subdirectory: "packages/mobile-app/android"
-  #       env:
-  #         TRAVIS_BRANCH: ${{ github.ref }}
-  #         TRAVIS: "true"
-  #         ANDROID_PASS: ${{ secrets.ANDROID_PASS }}
-  #         BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-  #         BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-  #     - name: List builds
-  #       if: always()
-  #       run: ls -R app/build/outputs
-  #       working-directory: packages/mobile-app/android
-  #     - uses: actions/upload-artifact@v1
-  #       if: always()
-  #       with:
-  #         name: Android Builds
-  #         path: packages/mobile-app/android/app/build/outputs
+      - name: Fastlane
+        uses: maierj/fastlane-action@v2.0.0
+        with:
+          lane: 'android internal'
+          subdirectory: 'android'
+        env:
+          TRAVIS_BRANCH: ${{ github.ref }}
+          TRAVIS: 'true'
+          ANDROID_PASS: ${{ secrets.ANDROID_PASS }}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      - name: List builds
+        if: always()
+        run: ls -R app/build/outputs
+        working-directory: android
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: Android Builds
+          path: android/app/build/outputs

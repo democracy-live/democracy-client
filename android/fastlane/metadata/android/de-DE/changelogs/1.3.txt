@@ -1,0 +1,17 @@
+DEMOCRACY 1.3 ist da! 
+
+#1 AUTOMATISCHE ERGEBNISPUSH
+
+Bislang hat Dich die App nach Deinen Abstimmnungen per Push nur über das offizielle Ergebnisse des Bundestags informiert, wenn Du proaktiv die Glocke aktiviert hast. Für die allermeisten von uns ist damit etwas Zentrales auf der Strecke geblieben: der Vergleich mit dem Bundestag. DEMOCRACY 1.3 kommt daher mit einem neuen Benachrichtigungskonzept. Ab sofort informiert Dich die App standardmäßig per Push über das offizielle Ergebnis des Bundestages, sobald dieses vorliegt, damit du es mit Deinem vergleichen kannst. 
+
+#2 BESSERE ÜBERSICHT 
+
+Um im unendlichen Wust an Gesetzen den Überblick zu behalten, gliedert DEMOCRACY 1.3 die unzähligen Abstimmungen jetzt nach Sitzungswochen.
+Neben der Einführung dieses Ordnungskriteriums sowie einer globalen Top-100-Liste der populärsten Vorgänge, ist in 1.3 auch die Darstellung der Elemente in der Liste überarbeitet. Ab sofort werden Community- bzw. Bundestagergebnisse in Miniatur bereits in der Liste angezeigt, um noch schneller Übereinstimmungen/Diskrepanzen in der Vertretung feststellen zu können. 
+
+#3 PERFORMANCE
+
+Außer diesen neuen Features ist 1.3 vor allem eine technische Generalüberholung der bisherigen App. 
+Darin enthalten sind alle vorausgegangen Funktionen (typensicher umgesetzt), ein React Native Upgrade sowie diverse Serververbesserungen, womit die App mehr Stabilität, Sicherheit und Performance garantieren kann.
+
+Aber jetzt, sieh selbst, was DEMOCRACY 1.3 für Dich bereithält!
