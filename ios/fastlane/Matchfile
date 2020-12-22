@@ -4,7 +4,7 @@ storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
-app_identifier(["de.democracy-deutschland.clientapp", "de.democracy-deutschland.clientapp.new", "de.democracy-deutschland.clientapp.internal", "de.democracy-deutschland.clientapp.alpha"])
+app_identifier(["de.democracy-deutschland.clientapp", "de.democracy-deutschland.clientapp.internal", "de.democracy-deutschland.clientapp.alpha"])
 # username("user@fastlane.tools") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`

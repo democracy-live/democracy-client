@@ -12,3 +12,6 @@ fastlane/test_output
 
 # Fastlane builds
 builds/*
+
+# Custom
+key.json
